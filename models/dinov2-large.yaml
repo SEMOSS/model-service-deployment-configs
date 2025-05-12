@@ -1,0 +1,29 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "dinov2-large"
+  namespace: "huggingface-models"
+spec:
+  predictor:
+    serviceAccountName: kube-model-deployer-sa
+    scaleTarget: 1
+    scaleMetric: concurrency
+    containers:
+    - name: kserve-container
+      image: docker.semoss.org/genai/cfg-ms-models/image_embed-gpu:2025-03-25-1537
+      env:
+        - name: MODEL_ID
+          value: facebook/dinov2-large
+        - name: MODEL_NAME
+          value: dinov2-large
+        - name: MODEL_FILES_PATH
+          value: "/mnt/models"
+        - name: STORAGE_URI
+          value: "oci://docker.semoss.org/genai/cfg-ms-models/oci/dinov2-large:2025-03-20-1339"
+      resources:
+        requests:
+          memory: "8Gi"
+          cpu: "2"
+        limits:
+          memory: "16Gi"
+          cpu: "2"

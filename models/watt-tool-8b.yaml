@@ -1,0 +1,19 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: watt-tool-8b
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: huggingface
+      args:
+        - --model_name=watt-tool-8b
+        - --model_id=watt-ai/watt-tool-8B
+      resources:
+        limits:
+          memory: 10Gi
+          nvidia.com/gpu: "1"
+        requests:
+          memory: 10Gi
+          nvidia.com/gpu: "1"

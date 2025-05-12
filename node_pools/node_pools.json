@@ -1,0 +1,36 @@
+{
+    "node_pools": {
+      "cpu-sapphire-pool": {
+        "machine_type": "c3-standard-8",
+        "instances": 1,
+        "labels": {"cloud.google.com/gke-nodepool": "cpu-sapphire-pool"},
+        "gpu": {
+          "type": null,
+          "count": 0
+        }
+      },
+      "t4-gpu-pool": {
+        "machine_type": "n1-standard-16",
+        "instances": 4,
+        "labels": {"cloud.google.com/gke-nodepool": "t4-gpu-pool"},
+        "gpu": {
+          "type": "nvidia.com/gpu",
+          "count": 1
+        }
+      },
+      "l4-gpu-pool": {
+        "machine_type": "g2-standard-12",
+        "instances": 1,
+        "labels": {"cloud.google.com/gke-nodepool": "l4-gpu-pool"},
+        "gpu": {
+          "type": "nvidia.com/gpu",
+          "count": 1
+        }
+      }
+    },
+    "machine_specs": {
+      "c3-standard-8": {"cpu": 8, "memory_gi": 32},
+      "n1-standard-16": {"cpu": 16, "memory_gi": 60},
+      "g2-standard-12": {"cpu": 12, "memory_gi": 48}
+    }
+  }

@@ -1,0 +1,27 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "stable-diffusion-v1-5"
+  namespace: "huggingface-models"
+spec:
+  predictor:
+    serviceAccountName: kube-model-deployer-sa
+    containers:
+    - name: kserve-container
+      image: docker.semoss.org/genai/cfg-ms-models/image-gpu:2025-03-24-1754
+      env:
+        - name: MODEL_ID
+          value: stable-diffusion-v1-5/stable-diffusion-v1-5
+        - name: MODEL_NAME
+          value: stable-diffusion-v1-5
+        - name: MODEL_FILES_PATH
+          value: "/mnt/models"
+        - name: STORAGE_URI
+          value: "pvc://filestore-cfg-pvc-rwm-hf/stable-diffusion-v1-5/"
+      resources:
+        requests:
+          memory: "10Gi"
+          nvidia.com/gpu: "1"
+        limits:
+          memory: "16Gi"
+          nvidia.com/gpu: "1"
