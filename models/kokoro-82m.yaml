@@ -8,7 +8,7 @@ spec:
     serviceAccountName: kube-model-deployer-sa
     containers:
     - name: kserve-container
-      image: docker.semoss.org/genai/cfg-ms-models/oci/kokoro-82m:2025-07-01-1504
+      image: docker.semoss.org/genai/cfg-ms-models/kokoro-gpu:2025-07-01-2032"
       env:
         - name: MODEL_ID
           value: hexgrad/Kokoro-82M
