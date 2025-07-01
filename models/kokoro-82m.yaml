@@ -1,0 +1,31 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "kokoro-82m"
+  namespace: "huggingface-models"
+spec:
+  predictor:
+    serviceAccountName: kube-model-deployer-sa
+    containers:
+    - name: kserve-container
+      image: docker.semoss.org/genai/cfg-ms-models/oci/kokoro-82m:2025-07-01-1504
+      env:
+        - name: MODEL_ID
+          value: hexgrad/Kokoro-82M
+        - name: MODEL_NAME
+          value: kokoro-82m
+        - name: MODEL_FILES_PATH
+          value: "/mnt/models"
+        - name: STORAGE_URI
+          value: "oci://docker.semoss.org/genai/cfg-ms-models/oci/kokoro-82m:2025-07-01-1504"
+        - name: HF_HOME
+          value: "/app/.cache/huggingface"
+        - name: TRANSFORMERS_CACHE
+          value: "/app/.cache/huggingface/transformers"
+      resources:
+        requests:
+          memory: "10Gi"
+          nvidia.com/gpu: "1"
+        limits:
+          memory: "16Gi"
+          nvidia.com/gpu: "1"

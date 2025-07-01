@@ -15,7 +15,7 @@ def upload_to_gcs(
 
 
 if __name__ == "__main__":
-    model_name = "qwen2-5-coder-1-5b"
+    model_name = "kokoro-82m"
 
     bucket_name = "model-service-deployment-resources"
     source_file_path = f"models/{model_name}.yaml"
