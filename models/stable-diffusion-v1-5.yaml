@@ -8,7 +8,7 @@ spec:
     serviceAccountName: kube-model-deployer-sa
     containers:
     - name: kserve-container
-      image: docker.semoss.org/genai/cfg-ms-models/image-gpu:2025-03-24-1754
+      image: container.semoss.org/genai/cfg-ms-models/image-gpu:2025-03-24-1754
       env:
         - name: MODEL_ID
           value: stable-diffusion-v1-5/stable-diffusion-v1-5

@@ -8,7 +8,7 @@ spec:
     serviceAccountName: kube-model-deployer-sa
     containers:
     - name: kserve-container
-      image: docker.semoss.org/genai/cfg-ms-models/kokoro-gpu:2025-07-08-1501
+      image: container.semoss.org/genai/cfg-ms-models/kokoro-gpu:2025-07-08-1501
       env:
         - name: MODEL_ID
           value: hexgrad/Kokoro-82M
@@ -17,7 +17,7 @@ spec:
         - name: MODEL_FILES_PATH
           value: "/mnt/models"
         - name: STORAGE_URI
-          value: "oci://docker.semoss.org/genai/cfg-ms-models/oci/kokoro-82m:2025-07-01-1504"
+          value: "oci://container.semoss.org/genai/cfg-ms-models/oci/kokoro-82m:2025-07-01-1504"
         - name: HF_HOME
           value: "/app/.cache/huggingface"
         - name: TRANSFORMERS_CACHE

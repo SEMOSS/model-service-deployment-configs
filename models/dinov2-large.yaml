@@ -10,7 +10,7 @@ spec:
     scaleMetric: concurrency
     containers:
     - name: kserve-container
-      image: docker.semoss.org/genai/cfg-ms-models/image_embed-gpu:2025-03-25-1537
+      image: container.semoss.org/genai/cfg-ms-models/image_embed-gpu:2025-03-25-1537
       env:
         - name: MODEL_ID
           value: facebook/dinov2-large
@@ -19,7 +19,7 @@ spec:
         - name: MODEL_FILES_PATH
           value: "/mnt/models"
         - name: STORAGE_URI
-          value: "oci://docker.semoss.org/genai/cfg-ms-models/oci/dinov2-large:2025-03-20-1339"
+          value: "oci://container.semoss.org/genai/cfg-ms-models/oci/dinov2-large:2025-03-20-1339"
       resources:
         requests:
           memory: "8Gi"
